@@ -24,7 +24,7 @@ const WishList = ({ wishes, onWishesChange }) => (
 
 /** Indicate prop's type */
 WishList.propTypes = {
-  /* wishes: PropTypes.array,  It's wrong for the eslint configuration, 
+  /* wishes: PropTypes.array,  It's wrong for the eslint configuration,
   in which it requests us the type of array */
   wishes: PropTypes.arrayOf(PropTypes.shape(WishItem.propTypes)),
   onWishesChange: PropTypes.func,
