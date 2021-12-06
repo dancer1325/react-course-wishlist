@@ -11,12 +11,17 @@ const initialWishes = [
 ];
 
 const App = () => {
-  const [wishes, setWishes] = useState(initialWishes);
+  const [wishes, setWishes] = useState(
+    initialWishes,
+  ); /* State to represent all the wishes */
+  /* setWishes with all the existing ones and the new one */
   return (
     <div className="app">
       <h1>My wishlist</h1>
       <WishInput onNewWish={wish => setWishes([...wishes, wish])} />
       <WishList wishes={wishes} onWishesChange={setWishes} />
+      {/* It could be indicated as function also */}
+      {/* <WishList wishes={wishes} onWishesChange={ wishes => setWishes(wishes)} /> */}
       <button
         type="button"
         className="wish-clear"

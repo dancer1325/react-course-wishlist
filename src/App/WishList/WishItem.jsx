@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+/* onDoneChange event to inform to the parent that the ste has changed */
 const WishItem = ({
   done, text, id, onDoneChange,
 }) => {
   const [age, setAge] = useState(0);
 
+  // It depends on the done variable --> It's indicated as second argument
   useEffect(() => {
     let ageInterval;
     if (done) {
       setAge(0);
     } else {
+      // Invoke setInternal js function each 1000 ms
       ageInterval = setInterval(() => {
         if (done) {
           clearInterval(ageInterval);
@@ -20,6 +23,7 @@ const WishItem = ({
         }
       }, 1000);
     }
+    // Optional function to return, to be invoked when the component is destroyed
     return () => clearInterval(ageInterval);
   }, [done]);
 
@@ -39,7 +43,8 @@ const WishItem = ({
       />
       <label htmlFor={id}>{text}</label>
     </li>
-  );
+  ); /* onChange js event triggered each time checkbox change */
+  /* onDoneChange event to inform to the parent that the ste has changed */
 };
 WishItem.propTypes = {
   done: PropTypes.bool,
@@ -51,6 +56,6 @@ WishItem.defaultProps = {
   done: false,
   text: '',
   id: '',
-  onDoneChange: () => {},
+  onDoneChange: () => {} /* As default, nothing will happen */,
 };
 export default WishItem;
